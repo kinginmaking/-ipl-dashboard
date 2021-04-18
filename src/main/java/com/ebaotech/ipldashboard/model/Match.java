@@ -2,8 +2,14 @@ package com.ebaotech.ipldashboard.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Match {
-    private long  id;
+
+    @Id
+private long  id;
 private String city;
 private LocalDate date;
 private String player_of_match;

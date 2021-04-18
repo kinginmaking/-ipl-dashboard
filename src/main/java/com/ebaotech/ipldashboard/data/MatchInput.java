@@ -122,8 +122,5 @@ public String getUmpire2() {
 public void setUmpire2(String umpire2) {
     this.umpire2 = umpire2;
 }
-
-
-
     
 }

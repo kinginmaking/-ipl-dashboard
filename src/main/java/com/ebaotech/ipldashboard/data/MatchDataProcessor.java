@@ -3,7 +3,7 @@ package com.ebaotech.ipldashboard.data;
 
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 
 import com.ebaotech.ipldashboard.model.Match;
 
@@ -26,29 +26,34 @@ public class MatchDataProcessor implements ItemProcessor<MatchInput, Match> {
     match.setVenue(person.getVenue());
 
     String firstInningTeam="", secondInningTeam="";
+
+   // System.out.println("Team 1:" + person.getTeam1()+"\n Team 2"+person.getTeam2());
     if("bat".equals(person.getToss_decision()))
     {
         firstInningTeam = person.getToss_winner();
-        secondInningTeam = person.getToss_winner().equals(person.getTeam1())?
-        person.getTeam2():
+        secondInningTeam = person.getToss_winner().equals(person.getTeam1())
+        ? person.getTeam2():
         person.getTeam1();
     }
     else
      { 
          secondInningTeam = person.getToss_winner();
-        secondInningTeam = person.getToss_winner().equals(person.getTeam1())?
+         firstInningTeam = person.getToss_winner().equals(person.getTeam1())?
         person.getTeam2():
         person.getTeam1();
      }
+    
 
      match.setTeam1(firstInningTeam);
+
      match.setTeam2(secondInningTeam);
+
      match.setToss_winner(person.getToss_winner());
      match.setToss_decision(person.getToss_decision());
      match.setResult(person.getResult());
      match.setResult_margin(person.getResult_margin());
      match.setUmpire1(person.getUmpire1());
-     match.setUmpire2(person.getUmpire2())
+     match.setUmpire2(person.getUmpire2());
 
     return match;
   }
